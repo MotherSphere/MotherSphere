@@ -1,0 +1,24 @@
+{
+  "steamid": "76561198000000000",
+  "personaname": "MotherSphere",
+  "profileurl": "https://steamcommunity.com/id/lopobia/",
+  "avatarfull": "https://avatars.cloudflare.steamstatic.com/3fa7bd72f8c6ea72576d2ada4196d1c8f3c7c601_full.jpg",
+  "avatar_data_uri": null,
+  "realname": "Lin Ha Zahard",
+  "loccountrycode": "BE",
+  "timecreated": 1356998400,
+  "lastlogoff": 1728000000,
+  "personastate": 1,
+  "personastateflags": 0,
+  "level": 61,
+  "badge_highlights": [
+    { "name": "Years of Service", "level": 10 },
+    { "name": "Event badge", "level": 9 },
+    { "name": "Community Ambassador", "level": 6 }
+  ],
+  "recent_games": [
+    { "name": "Stellar Blade", "playtime_2weeks": 480 },
+    { "name": "Mount & Blade: Warband", "playtime_2weeks": 210 },
+    { "name": "Rust", "playtime_2weeks": 140 }
+  ]
+}
