@@ -70,58 +70,59 @@
 </div>
 
 <div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <p align="right" style="clear: both;">
-        <a href = "https://youtu.be/4biZQR2ov0s">
-            <img src = "img/LilysAtelier.png" width = "240" align = "left">
-        </a>
-        <b><br><br>🎵Lily's Atelier | Stellar Blade🎵</b>
-    </p>
-    <br>
-    <br>
-    <p align="left" style="clear: both;">
-        <a href = "https://youtu.be/2L3OCqW76hE">
-            <img  src ="https://i.ytimg.com/vi/2L3OCqW76hE/maxresdefault.jpg" width="240" align="right">
-        </a>
-        <b><br><br>🎶Dawn in The Adan | Ichiko Aoba🎶🆙</b>
-    </p>
-    <br>
-    <br>
-    <p align="right" style="clear: both;">
-        <a href="https://youtu.be/AT5fDDKWMok">
-            <img src="https://i.ytimg.com/vi/AT5fDDKWMok/maxresdefault.jpg" width="240" align="left">
-        </a>
-        <b><br>🎶17 Sekibetsu | GATE🎶💌</b>
-    </p>
-    <br>
-    <br>
-    <p align="left" style="clear: both;">
-        <a href="https://youtu.be/zdIc3CHvmzo">
-            <img src="https://i.ytimg.com/vi/zdIc3CHvmzo/hqdefault.jpg" width="240" align="right">
-        </a>
-        <b><br><br>💘Wu Yun Ta Na | Pulse 💕</b>
-    </p>
-    <br>
-    <br>
-    <p align="right" style="clear: both;">
-        <a href = "https://youtu.be/4biZQR2ov0s">
-            <img src = "img/LilysAtelier.png" width = "240" align = "left">
-        </a>
-        <b><br><br>🎵Lily's Atelier | Stellar Blade🎵</b>
-    </p>
-    <br>
-    <br>
-    <p align="left" style="clear: both;">
-        <a href = "https://youtu.be/2L3OCqW76hE">
-            <img  src ="https://i.ytimg.com/vi/2L3OCqW76hE/maxresdefault.jpg" width="240" align="right">
-        </a>
-        <b><br><br>🎶Dawn in The Adan | Ichiko Aoba🎶🆙</b>
-    </p>
-    <br>
-    <br>
+
+<br>
+<br>
+<br>
+<br>
+<p align="right" style="clear: both;">
+    <a href = "https://youtu.be/4biZQR2ov0s">
+        <img src = "img/LilysAtelier.png" width = "240" align = "left">
+    </a>
+    <b><br><br>🎵Lily's Atelier | Stellar Blade🎵</b>
+</p>
+<br>
+<br>
+<p align="left" style="clear: both;">
+    <a href = "https://youtu.be/2L3OCqW76hE">
+        <img  src ="https://i.ytimg.com/vi/2L3OCqW76hE/maxresdefault.jpg" width="240" height="150" align="right">
+    </a>
+    <b><br><br>🎶Dawn in The Adan | Ichiko Aoba🎶🆙</b>
+</p>
+<br>
+<br>
+<p align="right" style="clear: both;">
+    <a href="https://youtu.be/AT5fDDKWMok">
+        <img src="https://i.ytimg.com/vi/AT5fDDKWMok/maxresdefault.jpg" width="240" height="150" align="left">
+    </a>
+    <b><br>🎶17 Sekibetsu | GATE🎶💌</b>
+</p>
+<br>
+<br>
+<p align="left" style="clear: both;">
+    <a href="https://youtu.be/zdIc3CHvmzo">
+        <img src="https://i.ytimg.com/vi/zdIc3CHvmzo/hqdefault.jpg" width="240" height="150" align="right">
+    </a>
+    <b><br><br>💘Wu Yun Ta Na | Pulse 💕</b>
+</p>
+<br>
+<br>
+<p align="right" style="clear: both;">
+    <a href = "https://youtu.be/4biZQR2ov0s">
+        <img src = "img/LilysAtelier.png" width = "240" align = "left">
+    </a>
+    <b><br><br>🎵Lily's Atelier | Stellar Blade🎵</b>
+</p>
+<br>
+<br>
+<p align="left" style="clear: both;">
+    <a href = "https://youtu.be/2L3OCqW76hE">
+        <img  src ="https://i.ytimg.com/vi/2L3OCqW76hE/maxresdefault.jpg" width="240" height="150" align="right">
+    </a>
+    <b><br><br>🎶Dawn in The Adan | Ichiko Aoba🎶🆙</b>
+</p>
+<br>
+<br>
 </div>
 
 <br>
