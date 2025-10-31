@@ -116,10 +116,10 @@
 <br>
 <br>
 <p align="left" style="clear: both;">
-    <a href = "https://www.youtube.com/watch?v=683mO1WJRH0">
-        <img  src ="https://i.ytimg.com/vi/2L3OCqW76hE/maxresdefault.jpg" width="240" height="150" align="right">
+    <a href = "https://www.youtube.com/watch?v=DgHZV4lbDpY">
+        <img  src ="https://i.ytimg.com/vi/W0YiKao3AAw/hq720.jpg" width="240" height="150" align="right">
     </a>
-    <b><br><br>🎶Dawn in The Adan | Ichiko Aoba🎶🆙</b>
+    <b><br><br>🎶Ender Lilies OST Awakening🎶🆙</b>
 </p>
 <br>
 <br>
