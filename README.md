@@ -116,8 +116,8 @@
 <br>
 <br>
 <p align="left" style="clear: both;">
-    <a href = "https://www.youtube.com/watch?v=DgHZV4lbDpY">
-        <img  src ="https://i.ytimg.com/vi/W0YiKao3AAw/hq720.jpg" width="240" height="150" align="right">
+    <a href = "https://www.youtube.com/watch?v=UZGUqbyKwO8">
+        <img  src ="https://i.ytimg.com/vi/UZGUqbyKwO8/maxresdefault.jpg" width="240" height="150" align="right">
     </a>
     <b><br><br>🎶Ender Lilies OST Awakening🎶🆙</b>
 </p>
