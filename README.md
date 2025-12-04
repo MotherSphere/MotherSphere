@@ -218,7 +218,7 @@
 </div>
 
 <div style="margin-top: 2rem;">
-  <h2 align="center">Thank You for Reading 🙋🏻‍♂️</h2>
+  <h2 align="center">Thank You for Reading !</h2>
   <div align="center">
     <img src="img/nod_SB.gif" width="500" alt="Stellar Blade nod animation" />
   </div>
