@@ -108,10 +108,10 @@
 <br>
 <br>
 <p align="right" style="clear: both;">
-    <a href = "https://www.youtube.com/watch?v=DgHZV4lbDpY">
+    <a href = "https://www.youtube.com/watch?v=UZGUqbyKwO8">
         <img src = "https://i.ytimg.com/vi/UZGUqbyKwO8/maxresdefault.jpg" width = "240" align = "left">
     </a>
-    <b><br><br>🎵Lily's Atelier | Stellar Blade🎵</b>
+    <b><br><br>🎵The Song of The Wanderer | Stellar Blade🎵</b>
 </p>
 <br>
 <br>
