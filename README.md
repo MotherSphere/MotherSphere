@@ -66,15 +66,15 @@
 
         ____________________________        MotherSphere@Colony
        /__________________________/|        -------------------
-      |   COLONY // CORE MODULE   | |        OS:        Colony
-      |   ┌────────────────────┐  | |        Host:      Mother Sphere
-      |   │   MOTHER SPHERE    │  | |        Kernel:    Arch Linux - Colony ver.
-      |   │      [  MS  ]      │  | |        Status:    Wandering the Colony
-      |   └────────────────────┘  | |        Terminal:  GitHub Computer
-      |___________________________|/         Focus:     GUI tooling + mod ecosystem
-             |   |   |                      Knowledge:  Rust + C++ + Python
-             |___|___|                      Modules:    ColonyLauncher
-                                            Repos:      dotfiles
+      |   COLONY // CORE MODULE   | |        OS:         Colony
+      |   ┌────────────────────┐  | |        Host:       Mother Sphere
+      |   │   MOTHER SPHERE    │  | |        Kernel:     Arch Linux - Colony ver.
+      |   │      [  MS  ]      │  | |        Status:     Wandering the Colony
+      |   └────────────────────┘  | |        Terminal:   GitHub Computer
+      |___________________________|/         Focus:      GUI tooling + mod ecosystem
+             |   |   |                       Knowledge:  Rust + C++ + Python
+             |___|___|                       Modules:    ColonyLauncher
+                                             Repos:      dotfiles
 ```
 
 <div align="center" style="margin: 2rem 0;">
