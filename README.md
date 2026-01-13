@@ -38,7 +38,7 @@
   <br>
   <!-- Steam showcase generated via scripts/update_steam_showcase.py -->
   <!-- Refresh with: python3 scripts/update_steam_showcase.py --vanity <steam-vanity> --cache data/steam-profile-cache.json -->
-  <a href="https://ste55555555.com/id/lopobia" style="text-decoration: none;">
+  <a href="https://steam.com/id/lopobia" style="text-decoration: none;">
     <img
       src="img/steam-profile-showcase.svg"
       alt="Steam profile showcase"
