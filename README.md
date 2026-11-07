@@ -1,8 +1,8 @@
 <div align="center">
-  <img
-    src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=24&pause=2500&color=82D9D0&center=true&vCenter=true&width=620&height=50&lines=May+your+memories+live+on%2C+forever."
-    alt="May your memories live on, forever."
-  />
+  <!-- Local copy of https://typograssy.kawarimidoll.deno.net/api?text=May%20your%20memories%20live%20on%2C%20forever%2E%20&l0=none&l1=82d9d0&l2=027353&l3=038c4c&l4=01402e&bg=none&frame=none&speed=100&comment= -->
+  <a href="https://github.com/kawarimidoll/typograssy">
+    <img src="img/typograssy-title.svg" alt="May your memories live on, forever." />
+  </a>
   <br>
   <img src="https://media1.tenor.com/m/dMFZ3Ymy9PIAAAAC/stellar-blade-eve.gif" width="300" alt="Pixel-art EVE at camp (Stellar Blade)" />
   <p>
