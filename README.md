@@ -77,56 +77,59 @@ Cisco Networking Academy badges:
   <img src="badges/ccna-enterprise-networking-security-and-automation.png" width="90" alt="CCNA: Enterprise Networking, Security, and Automation" />
 </p>
 
-## Discord and Steam
-
-<p align="center">
-  <a href="https://discord.com/users/503306069884534796">
-    <img
-      align="top"
-      src="https://lanyard.cnrad.dev/api/503306069884534796?theme=light&bg=809ecf&animated=false&hideDiscrim=true&borderRadius=30px&idleMessage=Probably%20doing%20something%20else..."
-      alt="Discord presence"
-      width="320"
-    />
-  </a>
-  <!-- Steam showcase generated via scripts/update_steam_showcase.py -->
-  <!-- Refresh with: python3 scripts/update_steam_showcase.py --vanity <steam-vanity> --cache data/steam-profile-cache.json -->
-  <a href="https://steamcommunity.com/id/lopobia">
-    <img align="top" src="img/steam-profile-showcase.svg" alt="Steam profile showcase" width="320" />
-  </a>
-</p>
-
 ## On repeat
 
-<table>
-  <tr>
-    <td align="center" width="33%">
-      <a href="https://youtu.be/4biZQR2ov0s"><img src="img/LilysAtelier.png" width="240" alt="Lily's Atelier" /></a><br>
-      <sub>Lily's Atelier · Stellar Blade</sub>
-    </td>
-    <td align="center" width="33%">
-      <a href="https://youtu.be/UZGUqbyKwO8"><img src="https://i.ytimg.com/vi/UZGUqbyKwO8/maxresdefault.jpg" width="240" alt="The Song of the Wanderer" /></a><br>
-      <sub>The Song of the Wanderer · Stellar Blade</sub>
-    </td>
-    <td align="center" width="33%">
-      <a href="https://youtu.be/2L3OCqW76hE"><img src="https://i.ytimg.com/vi/2L3OCqW76hE/maxresdefault.jpg" width="240" alt="Dawn in the Adan" /></a><br>
-      <sub>Dawn in the Adan · Ichiko Aoba</sub>
-    </td>
-  </tr>
-  <tr>
-    <td align="center" width="33%">
-      <a href="https://youtu.be/AT5fDDKWMok"><img src="https://i.ytimg.com/vi/AT5fDDKWMok/maxresdefault.jpg" width="240" alt="17 Sekibetsu" /></a><br>
-      <sub>17 Sekibetsu · GATE</sub>
-    </td>
-    <td align="center" width="33%">
-      <a href="https://youtu.be/zdIc3CHvmzo"><img src="https://i.ytimg.com/vi/zdIc3CHvmzo/maxresdefault.jpg" width="240" alt="Pulse" /></a><br>
-      <sub>Pulse · Wu Yun Ta Na</sub>
-    </td>
-    <td align="center" width="33%">
-      <a href="https://youtu.be/DgHZV4lbDpY"><img src="https://i.ytimg.com/vi/DgHZV4lbDpY/maxresdefault.jpg" width="240" alt="Awakening" /></a><br>
-      <sub>Awakening · Ender Lilies</sub>
-    </td>
-  </tr>
-</table>
+<div>
+
+<p align="right" style="clear: both;">
+    <a href = "https://youtu.be/4biZQR2ov0s">
+        <img src = "img/LilysAtelier.png" width = "240" align = "left">
+    </a>
+    <b><br><br>🎵Lily's Atelier | Stellar Blade🎵</b>
+</p>
+<br>
+<br>
+<p align="left" style="clear: both;">
+    <a href = "https://youtu.be/2L3OCqW76hE">
+        <img  src ="https://i.ytimg.com/vi/2L3OCqW76hE/maxresdefault.jpg" width="240" height="150" align="right">
+    </a>
+    <b><br><br>🎶Dawn in The Adan | Ichiko Aoba🎶🆙</b>
+</p>
+<br>
+<br>
+<p align="right" style="clear: both;">
+    <a href="https://youtu.be/AT5fDDKWMok">
+        <img src="https://i.ytimg.com/vi/AT5fDDKWMok/maxresdefault.jpg" width="240" height="150" align="left">
+    </a>
+    <b><br>🎶17 Sekibetsu | GATE🎶💌</b>
+</p>
+<br>
+<br>
+<p align="left" style="clear: both;">
+    <a href="https://youtu.be/zdIc3CHvmzo">
+        <img src="https://i.ytimg.com/vi/zdIc3CHvmzo/hqdefault.jpg" width="240" height="150" align="right">
+    </a>
+    <b><br><br>💘Wu Yun Ta Na | Pulse 💕</b>
+</p>
+<br>
+<br>
+<p align="right" style="clear: both;">
+    <a href = "https://www.youtube.com/watch?v=UZGUqbyKwO8">
+        <img src = "https://i.ytimg.com/vi/UZGUqbyKwO8/maxresdefault.jpg" width = "240" align = "left">
+    </a>
+    <b><br><br>🎵The Song of The Wanderer | Stellar Blade🎵</b>
+</p>
+<br>
+<br>
+<p align="left" style="clear: both;">
+    <a href = "https://www.youtube.com/watch?v=DgHZV4lbDpY">
+        <img  src ="https://i.ytimg.com/vi/DgHZV4lbDpY/maxresdefault.jpg" width="240" height="150" align="right">
+    </a>
+    <b><br><br>🎶Ender Lilies OST Awakening🎶🆙</b>
+</p>
+<br>
+<br>
+</div>
 
 ## GitHub stats
 
