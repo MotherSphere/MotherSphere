@@ -11,8 +11,7 @@
   </p>
 
 [![X (formerly Twitter) Follow](https://img.shields.io/twitter/follow/MotherSphere?style=for-the-badge&logo=X)](https://x.com/MotherSphere)
-[![Discord](https://img.shields.io/badge/discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/users/503306069884534796)
-[![Steam](https://img.shields.io/badge/steam-171a21?style=for-the-badge&logo=steam&logoColor=white)](https://steamcommunity.com/id/lopobia)
+[![Discord](https://img.shields.io/badge/discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/rzZxuK7ZvK)
 [![Project Colony](https://img.shields.io/badge/project%20colony-1C8C8C?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Project-Colony)
 <img src="https://komarev.com/ghpvc/?username=mothersphere&style=for-the-badge&color=1C8C8C" alt="Profile views" />
 
