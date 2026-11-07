@@ -10,7 +10,7 @@
     The apps live in <a href="https://github.com/Project-Colony">Project Colony</a>, the mods and one-off tools on this account.
   </p>
 
-[![X (formerly Twitter) Follow](https://img.shields.io/twitter/follow/MotherSphere?style=for-the-badge&logo=X)](https://x.com/MotherSphere)
+[![X (formerly Twitter) Follow](https://img.shields.io/twitter/follow/Mother_Sphere?style=for-the-badge&logo=X)](https://x.com/Mother_Sphere)
 [![Discord](https://img.shields.io/badge/discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/rzZxuK7ZvK)
 [![Project Colony](https://img.shields.io/badge/project%20colony-1C8C8C?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Project-Colony)
 <img src="https://komarev.com/ghpvc/?username=mothersphere&style=for-the-badge&color=1C8C8C" alt="Profile views" />
@@ -45,8 +45,8 @@
       <a href="https://github.com/Project-Colony/Raven"><b>Raven</b></a><br>
       <sub>Project-Colony</sub><br><br>
       <img src="https://raw.githubusercontent.com/Project-Colony/Raven/main/assets/brand/png/raven-icon-128-on-dark.png" width="64" height="64" align="left" alt="" />
-      Runs Windows programs on Linux against a real Windows installation mounted as <code>C:</code>, with Wine at the syscall layer.
-      <br clear="left"><br>
+      Runs Windows programs on Linux against a real Windows installation mounted as <code>C:</code>. Wine only translates NT calls into Linux syscalls; the base install is mounted read-only and programs write to an overlay.
+      <br clear="left"><br><br>
       <img src="https://img.shields.io/github/stars/Project-Colony/Raven?style=flat-square&color=1C8C8C&logo=github&label=stars" alt="GitHub stars" />
       <img src="https://img.shields.io/github/languages/top/Project-Colony/Raven?style=flat-square&color=1C8C8C" alt="Main language" />
     </td>
@@ -54,8 +54,8 @@
       <a href="https://github.com/Project-Colony/Eidos"><b>Eidos</b></a><br>
       <sub>Project-Colony</sub><br><br>
       <img src="https://raw.githubusercontent.com/Project-Colony/Eidos/main/assets/brand/png/eidos-icon-128-on-dark.png" width="64" height="64" align="left" alt="" />
-      Mod manager for Linux with its own virtual filesystem (FUSE and namespaces), written to replace MO2 and usvfs under Wine.
-      <br clear="left"><br>
+      Mod manager for Bethesda games on Linux. Each launch gets a private merged view of the mods (FUSE and namespaces), so no file is copied into the game folder. Built to replace MO2 and usvfs under Wine.
+      <br clear="left"><br><br>
       <img src="https://img.shields.io/github/stars/Project-Colony/Eidos?style=flat-square&color=1C8C8C&logo=github&label=stars" alt="GitHub stars" />
       <img src="https://img.shields.io/github/languages/top/Project-Colony/Eidos?style=flat-square&color=1C8C8C" alt="Main language" />
     </td>
@@ -65,8 +65,8 @@
       <a href="https://github.com/Project-Colony/Colony"><b>Colony</b></a><br>
       <sub>Project-Colony</sub><br><br>
       <img src="https://raw.githubusercontent.com/Project-Colony/Colony/main/assets/icons/icon.png" width="64" height="64" align="left" alt="" />
-      Launcher and app store that installs, updates and starts the Colony apps. Self-updates are signed.
-      <br clear="left"><br>
+      Launcher and app store for the Project Colony apps on Linux, Windows and macOS. It installs, updates and launches each app after checking its ed25519 signature, and lists your other applications in the same grid.
+      <br clear="left"><br><br>
       <img src="https://img.shields.io/github/stars/Project-Colony/Colony?style=flat-square&color=1C8C8C&logo=github&label=stars" alt="GitHub stars" />
       <img src="https://img.shields.io/github/languages/top/Project-Colony/Colony?style=flat-square&color=1C8C8C" alt="Main language" />
     </td>
@@ -74,8 +74,8 @@
       <a href="https://github.com/Project-Colony/Colony-Firewall-Control"><b>Colony-Firewall-Control</b></a><br>
       <sub>Project-Colony</sub><br><br>
       <img src="https://raw.githubusercontent.com/Project-Colony/Colony-Firewall-Control/main/assets/icons/colony-firewall.svg" width="64" height="64" align="left" alt="" />
-      Per-application outbound firewall for Linux, ported from OpenSnitch to Rust.
-      <br clear="left"><br>
+      Per-application outbound firewall for Linux, ported from OpenSnitch to Rust. It asks before a program reaches the network and remembers the answer, from an iced app, a tray icon or the <code>cfc</code> CLI.
+      <br clear="left"><br><br>
       <img src="https://img.shields.io/github/stars/Project-Colony/Colony-Firewall-Control?style=flat-square&color=1C8C8C&logo=github&label=stars" alt="GitHub stars" />
       <img src="https://img.shields.io/github/languages/top/Project-Colony/Colony-Firewall-Control?style=flat-square&color=1C8C8C" alt="Main language" />
     </td>
@@ -85,8 +85,8 @@
       <a href="https://github.com/Project-Colony/Grape"><b>Grape</b></a><br>
       <sub>Project-Colony</sub><br><br>
       <img src="https://raw.githubusercontent.com/Project-Colony/Grape/main/assets/icons/icon.png" width="64" height="64" align="left" alt="" />
-      Music player that uses your music folder as the library.
-      <br clear="left"><br>
+      Music player that uses your music folder as the library. It reads the tags, caches them and lets you browse by artist, album, genre or folder. Nothing leaves the machine unless you add a Last.fm API key.
+      <br clear="left"><br><br>
       <img src="https://img.shields.io/github/stars/Project-Colony/Grape?style=flat-square&color=1C8C8C&logo=github&label=stars" alt="GitHub stars" />
       <img src="https://img.shields.io/github/languages/top/Project-Colony/Grape?style=flat-square&color=1C8C8C" alt="Main language" />
     </td>
@@ -94,8 +94,8 @@
       <a href="https://github.com/MotherSphere/NIKKE-Launcher-Check"><b>NIKKE-Launcher-Check</b></a><br>
       <sub>MotherSphere</sub><br><br>
       <img src="https://avatars.githubusercontent.com/u/235695427?v=4&s=96" width="64" height="64" align="left" alt="" />
-      Read-only check for traces of the November 2026 NIKKE PC launcher compromise, on Windows, Linux (Proton, Steam Deck) and macOS.
-      <br clear="left"><br>
+      Read-only check for traces of the November 2026 NIKKE PC launcher compromise, on Windows, Linux (Proton, Steam Deck) and macOS. It only reads files and makes no network connection. Window and report in 16 languages.
+      <br clear="left"><br><br>
       <img src="https://img.shields.io/github/stars/MotherSphere/NIKKE-Launcher-Check?style=flat-square&color=1C8C8C&logo=github&label=stars" alt="GitHub stars" />
       <img src="https://img.shields.io/github/languages/top/MotherSphere/NIKKE-Launcher-Check?style=flat-square&color=1C8C8C" alt="Main language" />
     </td>
@@ -105,8 +105,8 @@
       <a href="https://github.com/MotherSphere/Colony-Camera"><b>Colony-Camera</b></a><br>
       <sub>MotherSphere</sub><br><br>
       <img src="https://avatars.githubusercontent.com/u/235695427?v=4&s=96" width="64" height="64" align="left" alt="" />
-      Third-person camera plugin for Skyrim, in Rust and C++ on CommonLibSSE-NG.
-      <br clear="left"><br>
+      Third-person camera plugin for Skyrim, in Rust and C++ on CommonLibSSE-NG. It adds advanced following, SmoothCam preset import, optional first-person body visibility and a settings page in SKSE Menu Framework.
+      <br clear="left"><br><br>
       <img src="https://img.shields.io/github/stars/MotherSphere/Colony-Camera?style=flat-square&color=1C8C8C&logo=github&label=stars" alt="GitHub stars" />
       <!-- Static badge: GitHub counts the Nexus page HTML as this repo's top language. -->
       <img src="https://img.shields.io/badge/c%2B%2B%20%C2%B7%20rust-1C8C8C?style=flat-square" alt="Main language" />
@@ -115,8 +115,8 @@
       <a href="https://github.com/MotherSphere/stellar-blade-coop"><b>stellar-blade-coop</b></a><br>
       <sub>MotherSphere</sub><br><br>
       <img src="https://avatars.githubusercontent.com/u/235695427?v=4&s=96" width="64" height="64" align="left" alt="" />
-      Experimental co-op mod for Stellar Blade, built on UE4SS and a Steam connection between the two games.
-      <br clear="left"><br>
+      Two-player online co-op for Stellar Blade on PC, linked through Steam. Each player sees the other's EVE in their own world, and enemies can be shared. UE4SS mod in Lua with a native DLL, experimental beta.
+      <br clear="left"><br><br>
       <img src="https://img.shields.io/github/stars/MotherSphere/stellar-blade-coop?style=flat-square&color=1C8C8C&logo=github&label=stars" alt="GitHub stars" />
       <img src="https://img.shields.io/github/languages/top/MotherSphere/stellar-blade-coop?style=flat-square&color=1C8C8C" alt="Main language" />
     </td>
