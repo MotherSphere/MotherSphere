@@ -1,237 +1,159 @@
 <div align="center">
-  <a href="https://github.com/kawarimidoll/typograssy">
-    <img
-      alt="typograssy"
-      src="https://typograssy.deno.dev/api?text=May%20your%20memories%20live%20on%2C%20forever%2E%20&l0=none&l1=82d9d0&l2=027353&l3=038c4c&l4=01402e&bg=none&frame=none&speed=100&comment="
-    />
-  </a>
-  <p>
-    <img
-      draggable="false"
-      style="width: 119px; height: 20px;"
-      src="https://komarev.com/ghpvc/?username=mothersphere&style=for-the-badge&color=1C8C8C"
-      alt="Profile views"
-    />
-  </p>
-</div>
-
-<div align="center" style="margin: 1.5rem 0;">
   <img
-    src="https://media1.tenor.com/m/dMFZ3Ymy9PIAAAAC/stellar-blade-eve.gif"
-    width="300"
-    alt="Stellar Blade Eve"
+    src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=24&pause=2500&color=82D9D0&center=true&vCenter=true&width=620&height=50&lines=May+your+memories+live+on%2C+forever."
+    alt="May your memories live on, forever."
   />
-</div>
-<br>
-<div
-  align="center"
-  style="margin: 1.5rem 0; display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;"
->
-  <a href="https://discord.com/users/503306069884534796">
-    <img
-      src="https://lanyard.cnrad.dev/api/503306069884534796?theme=light&bg=809ecf&animated=false&hideDiscrim=true&borderRadius=30px&idleMessage=Probably%20doing%20something%20else..."
-      alt="Discord Presence"
-      width="320"
-    />
-  </a>
   <br>
-  <br>
-  <!-- Steam showcase generated via scripts/update_steam_showcase.py -->
-  <!-- Refresh with: python3 scripts/update_steam_showcase.py --vanity <steam-vanity> --cache data/steam-profile-cache.json -->
-  <a href="https://steam.com/id/lopobia" style="text-decoration: none;">
-    <img
-      src="img/steam-profile-showcase.svg"
-      alt="Steam profile showcase"
-      width="320"
-      style="max-width: 100%; border-radius: 20px; box-shadow: 0 18px 32px rgba(6, 10, 18, 0.55);"
-    />
-  </a>
-  <br>
-  <br>
-  <a href="https://github.com/kittinan/spotify-github-profile">
-    <img
-      src="https://spotify-github-profile.kittinanx.com/api/view?uid=3h1cg9ljpxi05octh0swt44cv&cover_image=true&theme=default&show_offline=false&background_color=121212&interchange=false"
-      alt="Spotify profile"
-      width="240"
-      height="280"
-    />
-  </a>
+  <img src="https://media1.tenor.com/m/dMFZ3Ymy9PIAAAAC/stellar-blade-eve.gif" width="300" alt="Pixel-art EVE at camp (Stellar Blade)" />
+  <p>
+    I write desktop apps and game mods, mostly in Rust, on Arch Linux with Hyprland.<br>
+    The apps live in <a href="https://github.com/Project-Colony">Project Colony</a>, the mods and one-off tools on this account.
+  </p>
+
+[![X (formerly Twitter) Follow](https://img.shields.io/twitter/follow/MotherSphere?style=for-the-badge&logo=X)](https://x.com/MotherSphere)
+[![Discord](https://img.shields.io/badge/discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/users/503306069884534796)
+[![Steam](https://img.shields.io/badge/steam-171a21?style=for-the-badge&logo=steam&logoColor=white)](https://steamcommunity.com/id/lopobia)
+[![Project Colony](https://img.shields.io/badge/project%20colony-1C8C8C?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Project-Colony)
+<img src="https://komarev.com/ghpvc/?username=mothersphere&style=for-the-badge&color=1C8C8C" alt="Profile views" />
+
 </div>
 
-<h2 align="center">👁️‍🗨️ About Me 👁️‍🗨️</h2>
+## About me
 
 ```zsh
 ┌─[MotherSphere@Colony] - [~]
 └─>[$] neofetch
 
-        ____________________________        MotherSphere@Colony
-       /__________________________/|        -------------------
+        ____________________________         MotherSphere@Colony
+       /__________________________/|         -------------------
       |   COLONY // CORE MODULE   | |        OS:         Colony
       |   ┌────────────────────┐  | |        Host:       Mother Sphere
       |   │   MOTHER SPHERE    │  | |        Kernel:     Arch Linux - Colony ver.
-      |   │      [  MS  ]      │  | |        Status:     Wandering the Colony
-      |   └────────────────────┘  | |        Terminal:   GitHub Computer
-      |___________________________|/         Focus:      GUI tooling + mod ecosystem
-             |   |   |                       Knowledge:  Rust + C++ + Python
-             |___|___|                       Modules:    ColonyLauncher
-                                             Repos:      dotfiles
+      |   │      [  MS  ]      │  | |        WM:         Hyprland
+      |   └────────────────────┘  | |        Status:     Wandering the Colony
+      |___________________________|/         Terminal:   GitHub Computer
+             |   |   |                       Focus:      Rust desktop apps + game mods
+             |___|___|                       Knowledge:  Rust + C++ + Python + TypeScript
+                                             Modules:    Colony, Eidos, Raven, Grape
+                                             Org:        github.com/Project-Colony
 ```
 
-<div align="center" style="margin: 2rem 0;">
-  <img src="img/go_SB.gif" width="500" alt="Stellar Blade go animation" />
-</div>
+## Projects
 
-<div>
+### Project Colony
 
-<br>
-<br>
-<br>
-<br>
-<p align="right" style="clear: both;">
-    <a href = "https://youtu.be/4biZQR2ov0s">
-        <img src = "img/LilysAtelier.png" width = "240" align = "left">
-    </a>
-    <b><br><br>🎵Lily's Atelier | Stellar Blade🎵</b>
-</p>
-<br>
-<br>
-<p align="left" style="clear: both;">
-    <a href = "https://youtu.be/2L3OCqW76hE">
-        <img  src ="https://i.ytimg.com/vi/2L3OCqW76hE/maxresdefault.jpg" width="240" height="150" align="right">
-    </a>
-    <b><br><br>🎶Dawn in The Adan | Ichiko Aoba🎶🆙</b>
-</p>
-<br>
-<br>
-<p align="right" style="clear: both;">
-    <a href="https://youtu.be/AT5fDDKWMok">
-        <img src="https://i.ytimg.com/vi/AT5fDDKWMok/maxresdefault.jpg" width="240" height="150" align="left">
-    </a>
-    <b><br>🎶17 Sekibetsu | GATE🎶💌</b>
-</p>
-<br>
-<br>
-<p align="left" style="clear: both;">
-    <a href="https://youtu.be/zdIc3CHvmzo">
-        <img src="https://i.ytimg.com/vi/zdIc3CHvmzo/hqdefault.jpg" width="240" height="150" align="right">
-    </a>
-    <b><br><br>💘Wu Yun Ta Na | Pulse 💕</b>
-</p>
-<br>
-<br>
-<p align="right" style="clear: both;">
-    <a href = "https://www.youtube.com/watch?v=UZGUqbyKwO8">
-        <img src = "https://i.ytimg.com/vi/UZGUqbyKwO8/maxresdefault.jpg" width = "240" align = "left">
-    </a>
-    <b><br><br>🎵The Song of The Wanderer | Stellar Blade🎵</b>
-</p>
-<br>
-<br>
-<p align="left" style="clear: both;">
-    <a href = "https://www.youtube.com/watch?v=DgHZV4lbDpY">
-        <img  src ="https://i.ytimg.com/vi/W0YiKao3AAw/hq720.jpg" width="240" height="150" align="right">
-    </a>
-    <b><br><br>🎶Ender Lilies OST Awakening🎶🆙</b>
-</p>
-<br>
-<br>
-</div>
+| Project | What it is |
+|---|---|
+| [Raven](https://github.com/Project-Colony/Raven) | Runs Windows programs on Linux against a real Windows installation mounted as `C:`, with Wine at the syscall layer. |
+| [Eidos](https://github.com/Project-Colony/Eidos) | Mod manager for Linux with its own virtual filesystem (FUSE and namespaces), written to replace MO2 and usvfs under Wine. |
+| [Colony](https://github.com/Project-Colony/Colony) | Launcher and app store that installs, updates and starts the Colony apps. Self-updates are signed. |
+| [Colony Firewall Control](https://github.com/Project-Colony/Colony-Firewall-Control) | Per-application outbound firewall for Linux, ported from OpenSnitch to Rust. |
+| [Grape](https://github.com/Project-Colony/Grape) | Music player that uses your music folder as the library. |
 
-<br>
-<br>
-<br>
+### Games and modding
 
+| Project | What it is |
+|---|---|
+| [NIKKE-Launcher-Check](https://github.com/MotherSphere/NIKKE-Launcher-Check) | Read-only check for traces of the November 2026 NIKKE PC launcher compromise, on Windows, Linux (Proton, Steam Deck) and macOS. |
+| [Colony-Camera](https://github.com/MotherSphere/Colony-Camera) | Third-person camera plugin for Skyrim, in Rust and C++ on CommonLibSSE-NG. |
+| [stellar-blade-coop](https://github.com/MotherSphere/stellar-blade-coop) | Experimental co-op mod for Stellar Blade, built on UE4SS and a Steam connection between the two games. |
 
-<h2 align="center">🔎 Knowledge 📖</h2>
-<!-- ROADMAP -->
+## Stack
 
-- [x] Learning Python
-- [x] Creating a GUI for {insert project}
-- [ ] Learning Vim
-- [ ] Learning Lua
-- [ ] Learning bash/powershell
+<a href="https://skillicons.dev">
+  <img
+    src="https://skillicons.dev/icons?i=rust,cpp,py,ts,lua,cs,java,bash,godot,tauri,linux,arch,git&perline=13"
+    alt="Rust, C++, Python, TypeScript, Lua, C#, Java, Bash, Godot, Tauri, Linux, Arch Linux, Git"
+  />
+</a>
+
+Cisco Networking Academy badges:
+
+<p>
+  <img src="badges/networking-basics.png" width="90" alt="Networking Basics" />
+  <img src="badges/introduction-to-cybersecurity.png" width="90" alt="Introduction to Cybersecurity" />
+  <img src="badges/ccna-introduction-to-networks.png" width="90" alt="CCNA: Introduction to Networks" />
+  <img src="badges/ccna-switching-routing-and-wireless-essentials.1.png" width="90" alt="CCNA: Switching, Routing, and Wireless Essentials" />
+  <img src="badges/ccna-enterprise-networking-security-and-automation.png" width="90" alt="CCNA: Enterprise Networking, Security, and Automation" />
+</p>
+
+## Discord and Steam
+
+<p align="center">
+  <a href="https://discord.com/users/503306069884534796">
+    <img
+      align="top"
+      src="https://lanyard.cnrad.dev/api/503306069884534796?theme=light&bg=809ecf&animated=false&hideDiscrim=true&borderRadius=30px&idleMessage=Probably%20doing%20something%20else..."
+      alt="Discord presence"
+      width="320"
+    />
+  </a>
+  <!-- Steam showcase generated via scripts/update_steam_showcase.py -->
+  <!-- Refresh with: python3 scripts/update_steam_showcase.py --vanity <steam-vanity> --cache data/steam-profile-cache.json -->
+  <a href="https://steamcommunity.com/id/lopobia">
+    <img align="top" src="img/steam-profile-showcase.svg" alt="Steam profile showcase" width="320" />
+  </a>
+</p>
+
+## On repeat
+
+<table>
+  <tr>
+    <td align="center" width="33%">
+      <a href="https://youtu.be/4biZQR2ov0s"><img src="img/LilysAtelier.png" width="240" alt="Lily's Atelier" /></a><br>
+      <sub>Lily's Atelier · Stellar Blade</sub>
+    </td>
+    <td align="center" width="33%">
+      <a href="https://youtu.be/UZGUqbyKwO8"><img src="https://i.ytimg.com/vi/UZGUqbyKwO8/maxresdefault.jpg" width="240" alt="The Song of the Wanderer" /></a><br>
+      <sub>The Song of the Wanderer · Stellar Blade</sub>
+    </td>
+    <td align="center" width="33%">
+      <a href="https://youtu.be/2L3OCqW76hE"><img src="https://i.ytimg.com/vi/2L3OCqW76hE/maxresdefault.jpg" width="240" alt="Dawn in the Adan" /></a><br>
+      <sub>Dawn in the Adan · Ichiko Aoba</sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="33%">
+      <a href="https://youtu.be/AT5fDDKWMok"><img src="https://i.ytimg.com/vi/AT5fDDKWMok/maxresdefault.jpg" width="240" alt="17 Sekibetsu" /></a><br>
+      <sub>17 Sekibetsu · GATE</sub>
+    </td>
+    <td align="center" width="33%">
+      <a href="https://youtu.be/zdIc3CHvmzo"><img src="https://i.ytimg.com/vi/zdIc3CHvmzo/maxresdefault.jpg" width="240" alt="Pulse" /></a><br>
+      <sub>Pulse · Wu Yun Ta Na</sub>
+    </td>
+    <td align="center" width="33%">
+      <a href="https://youtu.be/DgHZV4lbDpY"><img src="https://i.ytimg.com/vi/DgHZV4lbDpY/maxresdefault.jpg" width="240" alt="Awakening" /></a><br>
+      <sub>Awakening · Ender Lilies</sub>
+    </td>
+  </tr>
+</table>
+
+## GitHub stats
+
+<p align="center">
+  <img
+    width="100%"
+    alt="Profile summary"
+    src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=mothersphere&theme=2077"
+  />
+  <img
+    width="49%"
+    alt="Repositories per language"
+    src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=mothersphere&theme=2077"
+  />
+  <img
+    width="49%"
+    alt="Most committed languages"
+    src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=mothersphere&theme=2077"
+  />
+  <img
+    width="60%"
+    alt="Contribution streak"
+    src="https://streak-stats.demolab.com/?user=mothersphere&theme=neon&date_format=%5BY%20%5DM%20j"
+  />
+</p>
 
 <div align="center">
-  <p style="max-width: 600px; text-align: justify;">
-    Behold! My skills:
-  </p>
-  <a href="https://skillicons.dev">
-    <img
-      style="margin: 10px;"
-      src="https://skillicons.dev/icons?i=bash,linux,git,github,gitlabpy,css,html&perline=8"
-      alt="My Skills"
-    />
-  </a>
-</div>
-
-<h2 align="center">📉 GitHub Stats</h2>
-
-<div align="center">
-  <a href="https://github-readme-stats.vercel.app">
-    <img
-      width="49%"
-      alt="Stats"
-      src="https://github-readme-stats.vercel.app/api?username=mothersphere&count_private=true&theme=neon&show_icons=true&show=reviews,prs_merged,prs_merged_percentage&rank_icon=github&hide_border=false"
-    />
-  </a>
-  <a href="https://github-readme-streak-stats.herokuapp.com">
-    <img
-      width="49%"
-      alt="Streak Stats"
-      src="https://github-readme-streak-stats.herokuapp.com/?user=mothersphere&theme=neon&hide_border=false&date_format=%5BY%20%5DM%20j"
-    />
-  </a>
-  <a href="https://github.com/ryo-ma/github-profile-trophy">
-    <img
-      width="50%"
-      align="left"
-      alt="Trophy"
-      src="https://github-profile-trophy.vercel.app/?username=mothersphere&theme=radical&row=4&column=4"
-    />
-    <img
-      width="41%"
-      align="right"
-      alt="Top languages"
-      src="https://github-readme-stats.vercel.app/api/top-langs/?username=mothersphere&hide_border=false&theme=neon&layout=compact&hide_progress=false&hide=jupyter%20notebook&langs_count=6"
-    />
-  </a>
-  <a href="https://github.com/ashutosh00710/github-readme-activity-graph">
-    <img
-      width="100%"
-      alt="Activity graph"
-      src="https://github-readme-activity-graph.vercel.app/graph?username=mothersphere&theme=redical"
-    />
-  </a>
-  <a href="https://github.com/vn7n24fzkq/github-profile-summary-cards">
-    <img
-      width="100%"
-      alt="Profile summary"
-      src="http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=mothersphere&theme=2077"
-    />
-  </a>
-</div>
-
-<h2 align="center">📝 Contact Me 📝</h2>
-
-<div align="center">
-  <a href="https://github.com/mothersphere" target="_blank">
-    <img
-      src="https://img.shields.io/badge/github-%2324292e.svg?&style=for-the-badge&logo=github&logoColor=white"
-      alt="GitHub"
-      style="margin-bottom: 5px;"
-    />
-  </a>
-  <div style="margin: 1.5rem 0;">
-    <img src="img/doit_SB.gif" width="500" alt="Stellar Blade do it animation" />
-  </div>
-  <div style="margin: 1.5rem 0;">
-    <img src="img/hiii_SB.gif" width="500" alt="Stellar Blade greeting animation" />
-  </div>
-</div>
-
-<div style="margin-top: 2rem;">
-  <h2 align="center">Thank You for Reading !</h2>
-  <div align="center">
-    <img src="img/nod_SB.gif" width="500" alt="Stellar Blade nod animation" />
-  </div>
+  <img src="img/nod_SB.gif" width="400" alt="EVE nodding" />
+  <p>Thanks for reading.</p>
 </div>
