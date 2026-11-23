@@ -1,0 +1,44 @@
+name: Update stats cards
+
+on:
+  schedule:
+    - cron: '23 5 * * *'   # off the hour: top-of-hour runs get delayed or dropped
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['scripts/**', '.github/workflows/update-cards.yml']
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-cards
+  cancel-in-progress: false
+
+jobs:
+  cards:
+    if: github.ref == 'refs/heads/main'   # a manual run on another branch must not overwrite the cards
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Test
+        run: python3 -m unittest discover -s scripts -p 'test_*.py'
+
+      - name: Draw the cards
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python3 scripts/update_github_cards.py --out "$RUNNER_TEMP/cards"
+
+      # The cards branch holds one commit with the three SVG files, replaced on every run.
+      - name: Publish to the cards branch
+        working-directory: ${{ runner.temp }}/cards
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          git init -q -b cards
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -q -m 'chore: update stats cards'
+          git push -f "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:cards

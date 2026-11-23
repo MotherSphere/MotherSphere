@@ -268,5 +268,15 @@ class MainTests(unittest.TestCase):
         self.assertEqual(sorted(p.name for p in self.out.iterdir()), sorted(NAMES))
 
 
+class WorkflowTests(unittest.TestCase):
+    def test_daily_workflow_publishes_to_the_cards_branch(self):
+        text = (Path(__file__).parent.parent / ".github/workflows/update-cards.yml").read_text()
+        for line in ("cron: '23 5 * * *'", "workflow_dispatch:", "contents: write",
+                     "if: github.ref == 'refs/heads/main'", "python3 -m unittest discover -s scripts",
+                     '--out "$RUNNER_TEMP/cards"', "git push -f", "HEAD:cards"):
+            self.assertIn(line, text)
+        self.assertNotIn("secrets.", text)
+
+
 if __name__ == "__main__":
     unittest.main()
