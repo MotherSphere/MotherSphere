@@ -5,8 +5,12 @@ The cards use the colors, fonts and window frame of mothersphere.dev. The fonts 
 as base64 subsets because an SVG shown through an <img> tag cannot load anything else.
 """
 
+import argparse
 import base64
 import json
+import os
+import sys
+import urllib.request
 from datetime import date, datetime, timedelta
 from pathlib import Path
 from xml.sax.saxutils import escape
@@ -256,6 +260,62 @@ def lang_card(active, items, caption, unit):
     return frame(w, h, title("LANGUAGES") + controls(w - 24, 26), "".join(body), FACES[:3], label)
 
 
+# Data. Public data only, so the workflow's GITHUB_TOKEN is enough.
+USER, ORG = "MotherSphere", "Project-Colony"
+API = "https://api.github.com/graphql"
+BASE_QUERY = "query($login:String!){user(login:$login){createdAt contributionsCollection{contributionYears}}}"
+REPOS = ("repositories(first:100,after:$cursor,privacy:PUBLIC,isFork:false{owned}){{totalCount "
+         "pageInfo{{hasNextPage endCursor}} nodes{{primaryLanguage{{name}}}}}}")
+USER_REPOS = ("query($login:String!,$cursor:String){user(login:$login){"
+              + REPOS.format(owned=",ownerAffiliations:OWNER") + "}}")
+ORG_REPOS = "query($login:String!,$cursor:String){organization(login:$login){" + REPOS.format(owned="") + "}}"
+# shortcut: the API returns at most 100 repositories per year here; page by month if a year ever has more.
+YEAR_QUERY = """query($login:String!,$start:DateTime!,$end:DateTime!){user(login:$login){
+contributionsCollection(from:$start,to:$end){contributionCalendar{weeks{contributionDays{date contributionCount}}}
+commitContributionsByRepository(maxRepositories:100){repository{primaryLanguage{name}} contributions{totalCount}}}}}"""
+
+
+def gql(query, token, **variables):
+    req = urllib.request.Request(API, data=json.dumps({"query": query, "variables": variables}).encode(), headers={
+        "Authorization": f"bearer {token}", "Content-Type": "application/json", "User-Agent": "MotherSphere-cards"})
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        body = json.load(resp)
+    if body.get("errors") or "data" not in body:
+        raise RuntimeError(f"GraphQL error: {body.get('errors')}")
+    return body["data"]
+
+
+def owner_repos(call, login, org):
+    """(total count, every node) of an owner's public non-fork repos, following the pages."""
+    key, query = ("organization", ORG_REPOS) if org else ("user", USER_REPOS)
+    nodes, cursor = [], None
+    while True:
+        page = call(query, login=login, cursor=cursor)[key]["repositories"]
+        nodes += page["nodes"]
+        if not page["pageInfo"]["hasNextPage"]:
+            return page["totalCount"], nodes
+        cursor = page["pageInfo"]["endCursor"]
+
+
+def fetch_stats(call):
+    base = call(BASE_QUERY, login=USER)["user"]
+    public_repos, user_repos = owner_repos(call, USER, org=False)
+    _, org_repos = owner_repos(call, ORG, org=True)
+    days, commits = {}, {}
+    for year in sorted(base["contributionsCollection"]["contributionYears"]):
+        coll = call(YEAR_QUERY, login=USER, start=f"{year}-01-01T00:00:00Z",
+                    end=f"{year}-12-31T23:59:59Z")["user"]["contributionsCollection"]
+        for week in coll["contributionCalendar"]["weeks"]:
+            for day in week["contributionDays"]:
+                days[day["date"]] = day["contributionCount"]
+        for repo in coll["commitContributionsByRepository"]:
+            name = (repo["repository"]["primaryLanguage"] or {}).get("name")
+            if name:
+                commits[name] = commits.get(name, 0) + repo["contributions"]["totalCount"]
+    return {"created_at": base["createdAt"], "public_repos": public_repos, "days": dict(sorted(days.items())),
+            "langs_by_repo": count_languages(user_repos + org_repos), "langs_by_commit": commits}
+
+
 def render_all(stats, today):
     since = joined(stats).upper()
     return {
@@ -265,3 +325,34 @@ def render_all(stats, today):
         "github-langs-commit.svg": lang_card("commit", top5(stats["langs_by_commit"]),
                                              f"COMMITS · SINCE {since}", "COMMITS"),
     }
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(description="Draw the GitHub stats cards of the profile README.")
+    parser.add_argument("--out", type=Path, required=True, help="folder for the three SVG files")
+    parser.add_argument("--data", type=Path, help="render from a saved stats file instead of the API")
+    parser.add_argument("--save-data", type=Path, help="also write the fetched stats to this file")
+    args = parser.parse_args(argv)
+    if args.data:
+        stats = json.loads(args.data.read_text())
+    else:
+        token = os.environ.get("GITHUB_TOKEN")
+        if not token:
+            print("GITHUB_TOKEN is not set", file=sys.stderr)
+            return 2
+        try:
+            stats = fetch_stats(lambda query, **variables: gql(query, token, **variables))
+        except Exception as e:  # any failure keeps the cards that are already published
+            print(f"fetch failed, nothing written: {e}", file=sys.stderr)
+            return 1
+    svgs = render_all(stats, datetime.now(TZ).date())
+    if args.save_data:
+        args.save_data.write_text(json.dumps(stats, indent=1, sort_keys=True) + "\n")
+    args.out.mkdir(parents=True, exist_ok=True)
+    for name, svg in svgs.items():
+        (args.out / name).write_text(svg, encoding="utf-8")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

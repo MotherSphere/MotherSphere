@@ -1,11 +1,17 @@
 """Tests for update_github_cards.py. Run: python3 -m unittest discover -s scripts -p 'test_*.py'"""
 
+import contextlib
+import io
 import json
+import os
+import shutil
 import sys
+import tempfile
 import unittest
 import xml.etree.ElementTree as ET
 from datetime import date, timedelta
 from pathlib import Path
+from unittest import mock
 
 sys.path.insert(0, str(Path(__file__).parent))
 
@@ -176,6 +182,90 @@ class RenderTests(unittest.TestCase):
         for name, start in zip(NAMES, ("MotherSphere on GitHub", "Top languages by repo", "Top languages by commit")):
             title = ET.fromstring(self.out[name]).find(SVG + "title").text
             self.assertTrue(title.startswith(start), title)
+
+
+def repo_page(key, total, nodes, cursor=None):
+    return {key: {"repositories": {"totalCount": total, "nodes": nodes,
+                                   "pageInfo": {"hasNextPage": cursor is not None, "endCursor": cursor}}}}
+
+
+def lang(name):
+    return {"primaryLanguage": {"name": name} if name else None}
+
+
+class FetchTests(unittest.TestCase):
+    def test_owner_repos_paginates(self):
+        seen = []
+
+        def call(query, **variables):
+            seen.append(variables["cursor"])
+            if variables["cursor"] is None:
+                return repo_page("user", 3, [lang("Rust"), lang(None)], cursor="c1")
+            return repo_page("user", 3, [lang("Lua")])
+
+        total, nodes = cards.owner_repos(call, "MotherSphere", org=False)
+        self.assertEqual((total, len(nodes)), (3, 3))
+        self.assertEqual(seen, [None, "c1"])
+
+    def test_fetch_stats_merges_years_and_owners(self):
+        years = {
+            "2025": ({"2025-12-31": 2}, [("Rust", 10), ("Lua", 5), (None, 3)]),
+            "2026": ({"2026-01-01": 4}, [("Rust", 1)]),
+        }
+
+        def call(query, **variables):
+            if "contributionYears" in query:
+                return {"user": {"createdAt": "2025-10-02T12:11:56Z",
+                                 "contributionsCollection": {"contributionYears": [2026, 2025]}}}
+            if "commitContributionsByRepository" in query:
+                days, commits = years[variables["start"][:4]]
+                return {"user": {"contributionsCollection": {
+                    "contributionCalendar": {"weeks": [{"contributionDays": [
+                        {"date": d, "contributionCount": n} for d, n in days.items()]}]},
+                    "commitContributionsByRepository": [
+                        {"repository": lang(name), "contributions": {"totalCount": n}} for name, n in commits]}}}
+            if "organization" in query:
+                return repo_page("organization", 2, [lang("Rust"), lang(None)])
+            return repo_page("user", 2, [lang("Rust"), lang("Python")])
+
+        stats = cards.fetch_stats(call)
+        self.assertEqual(stats["created_at"], "2025-10-02T12:11:56Z")
+        self.assertEqual(stats["public_repos"], 2)
+        self.assertEqual(stats["days"], {"2025-12-31": 2, "2026-01-01": 4})
+        self.assertEqual(stats["langs_by_repo"], {"Rust": 2, "Python": 1})
+        self.assertEqual(stats["langs_by_commit"], {"Rust": 11, "Lua": 5})
+
+    def test_gql_raises_on_errors(self):
+        with mock.patch("urllib.request.urlopen") as urlopen:
+            urlopen.return_value.__enter__.return_value = io.BytesIO(b'{"errors":[{"message":"x"}]}')
+            with self.assertRaises(RuntimeError):
+                cards.gql("query{viewer{login}}", "token")
+
+
+class MainTests(unittest.TestCase):
+    def setUp(self):
+        self.tmp = Path(tempfile.mkdtemp())
+        self.addCleanup(shutil.rmtree, self.tmp)
+        self.out = self.tmp / "out"
+
+    def run_main(self, argv, env):
+        with mock.patch.dict(os.environ, env, clear=True), contextlib.redirect_stderr(io.StringIO()):
+            return cards.main(argv)
+
+    def test_main_writes_nothing_when_fetch_fails(self):
+        with mock.patch.object(cards, "fetch_stats", side_effect=RuntimeError("boom")):
+            self.assertEqual(self.run_main(["--out", str(self.out)], {"GITHUB_TOKEN": "x"}), 1)
+        self.assertFalse(self.out.exists())
+
+    def test_main_needs_a_token(self):
+        self.assertEqual(self.run_main(["--out", str(self.out)], {}), 2)
+        self.assertFalse(self.out.exists())
+
+    def test_main_renders_from_saved_data(self):
+        data = self.tmp / "stats.json"
+        data.write_text(json.dumps(STATS))
+        self.assertEqual(self.run_main(["--out", str(self.out), "--data", str(data)], {}), 0)
+        self.assertEqual(sorted(p.name for p in self.out.iterdir()), sorted(NAMES))
 
 
 if __name__ == "__main__":
