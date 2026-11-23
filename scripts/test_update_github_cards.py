@@ -1,6 +1,7 @@
 """Tests for update_github_cards.py. Run: python3 -m unittest discover -s scripts -p 'test_*.py'"""
 
 import contextlib
+import importlib.util
 import io
 import json
 import os
@@ -33,6 +34,14 @@ class FontTests(unittest.TestCase):
             data = (cards.FONTS / f"{face}.woff2").read_bytes()
             self.assertEqual(data[:4], b"wOF2", face)
             self.assertLess(len(data), 12000, face)
+
+    @unittest.skipUnless(importlib.util.find_spec("fontTools") and importlib.util.find_spec("brotli"),
+                         "needs fontTools and brotli to read woff2")
+    def test_subsets_keep_the_licence_url(self):
+        from fontTools.ttLib import TTFont
+        for face in cards.FACES:
+            name = TTFont(cards.FONTS / f"{face}.woff2")["name"]
+            self.assertIn("scripts.sil.org/OFL", str(name.getDebugName(14)), face)
 
     def test_licences_name_each_family(self):
         text = (cards.FONTS / "LICENSES.txt").read_text()

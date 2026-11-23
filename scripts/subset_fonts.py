@@ -35,6 +35,7 @@ def main():
         options = subset.Options()
         options.flavor = "woff2"
         options.layout_features = ["kern", "tnum"]
+        options.name_IDs = [0, 1, 2, 3, 4, 5, 6, 13, 14]  # 13 and 14 carry the OFL text and URL
         subsetter = subset.Subsetter(options)
         subsetter.populate(text=GLYPHS)
         subsetter.subset(font)
