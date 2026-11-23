@@ -198,21 +198,22 @@ Cisco Networking Academy badges:
 
 ## GitHub stats
 
+<!-- Drawn by scripts/update_github_cards.py and pushed to the cards branch every day by .github/workflows/update-cards.yml. -->
 <p align="center">
   <img
     width="100%"
     alt="Contributions over the last 52 weeks, totals and streaks"
-    src="img/github-profile.svg"
+    src="https://raw.githubusercontent.com/MotherSphere/MotherSphere/cards/github-profile.svg"
   />
   <img
     width="49%"
     alt="Top languages by public repository"
-    src="img/github-langs-repo.svg"
+    src="https://raw.githubusercontent.com/MotherSphere/MotherSphere/cards/github-langs-repo.svg"
   />
   <img
     width="49%"
     alt="Top languages by commit"
-    src="img/github-langs-commit.svg"
+    src="https://raw.githubusercontent.com/MotherSphere/MotherSphere/cards/github-langs-commit.svg"
   />
 </p>
 
