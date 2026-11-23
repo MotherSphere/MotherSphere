@@ -279,7 +279,8 @@ class WorkflowTests(unittest.TestCase):
         text = (Path(__file__).parent.parent / ".github/workflows/update-cards.yml").read_text()
         for line in ("cron: '23 5 * * *'", "workflow_dispatch:", "contents: write",
                      "if: github.ref == 'refs/heads/main'", "python3 -m unittest discover -s scripts",
-                     '--out "$RUNNER_TEMP/cards"', "git push -f", "HEAD:cards"):
+                     '--out "$RUNNER_TEMP/cards"', "git push -f", "HEAD:cards",
+                     "actions: write", "gh workflow enable update-cards.yml"):
             self.assertIn(line, text)
         self.assertNotIn("secrets.", text)
 
