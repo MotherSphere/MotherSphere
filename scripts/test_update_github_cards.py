@@ -257,6 +257,12 @@ class MainTests(unittest.TestCase):
             self.assertEqual(self.run_main(["--out", str(self.out)], {"GITHUB_TOKEN": "x"}), 1)
         self.assertFalse(self.out.exists())
 
+    def test_main_writes_nothing_when_data_is_empty(self):
+        empty = dict(STATS, days={}, langs_by_repo={}, langs_by_commit={})
+        with mock.patch.object(cards, "fetch_stats", return_value=empty):
+            self.assertEqual(self.run_main(["--out", str(self.out)], {"GITHUB_TOKEN": "x"}), 1)
+        self.assertFalse(self.out.exists())
+
     def test_main_needs_a_token(self):
         self.assertEqual(self.run_main(["--out", str(self.out)], {}), 2)
         self.assertFalse(self.out.exists())

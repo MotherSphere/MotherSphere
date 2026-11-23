@@ -345,6 +345,9 @@ def main(argv=None):
         except Exception as e:  # any failure keeps the cards that are already published
             print(f"fetch failed, nothing written: {e}", file=sys.stderr)
             return 1
+        if not any(stats["days"].values()) or not stats["langs_by_repo"] or not stats["langs_by_commit"]:
+            print("the API answered with empty data, nothing written", file=sys.stderr)
+            return 1
     svgs = render_all(stats, datetime.now(TZ).date())
     if args.save_data:
         args.save_data.write_text(json.dumps(stats, indent=1, sort_keys=True) + "\n")
