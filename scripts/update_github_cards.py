@@ -5,9 +5,12 @@ The cards use the colors, fonts and window frame of mothersphere.dev. The fonts 
 as base64 subsets because an SVG shown through an <img> tag cannot load anything else.
 """
 
+import base64
 import json
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta
 from pathlib import Path
+from xml.sax.saxutils import escape
+from zoneinfo import ZoneInfo
 
 FONTS = Path(__file__).parent / "fonts"
 FACES = ("rajdhani-600", "mono-400", "mono-500", "instrument-500")
@@ -84,3 +87,181 @@ def fit(face, size, s, max_w, ls=0.0):
     while s and text_width(face, size, s + "…", ls) > max_w:
         s = s[:-1]
     return s.rstrip() + "…"
+
+
+# Drawing. Colors and shapes come from mothersphere.dev (src/styles/kit.css, desktop.css).
+TEXT, WHITE, GREY, BETA, TEAL, RAIL, DASH, BG = (
+    "#ececec", "#ffffff", "#b5b5b5", "#cce9f4", "#add1c4", "#dedbde", "#444444", "#0a0e12")
+EASE = "cubic-bezier(.333,0,.667,1)"
+FAMILY = {"rajdhani-600": ("ms-raj", "Rajdhani,sans-serif"), "mono-400": ("ms-mono", "'JetBrains Mono',monospace"),
+          "mono-500": ("ms-mono5", "'JetBrains Mono',monospace"),
+          "instrument-500": ("ms-ins", "'Instrument Sans',sans-serif")}
+CLASS = {"rajdhani-600": "r", "mono-400": "m", "mono-500": "m5", "instrument-500": "i"}
+TZ = ZoneInfo("Europe/Brussels")
+
+
+def text(x, y, s, face, size, fill, ls=0.0, anchor="start"):
+    a = f' text-anchor="{anchor}"' if anchor != "start" else ""
+    spacing = f' letter-spacing="{ls:g}"' if ls else ""
+    return (f'<text x="{x:g}" y="{y:g}" class="{CLASS[face]}" font-size="{size:g}" fill="{fill}"{spacing}{a}>'
+            f"{escape(s)}</text>")
+
+
+def style(faces):
+    out = []
+    for face in faces:
+        family, fallback = FAMILY[face]
+        b64 = base64.b64encode((FONTS / f"{face}.woff2").read_bytes()).decode()
+        out.append(f"@font-face{{font-family:'{family}';src:url(data:font/woff2;base64,{b64}) format('woff2')}}")
+        out.append(f".{CLASS[face]}{{font-family:'{family}',{fallback}}}")
+    out.append(f"@keyframes p{{from{{opacity:.3}}to{{opacity:1}}}}.pulse{{animation:p 500ms {EASE} infinite alternate}}")
+    out.append("@media (prefers-reduced-motion:reduce){.pulse{animation:none}}")
+    return "<style>" + "".join(out) + "</style>"
+
+
+def marker(x, y):
+    """The '::' marker of both sites: four small squares."""
+    return "".join(f'<rect x="{x + dx:g}" y="{y + dy:g}" width="2" height="2" fill="{BETA}"/>'
+                   for dx in (0, 4.4) for dy in (0, 5.3))
+
+
+def emblem(x, y, h=19):
+    """The rhombus with four square holes (Emblem.astro)."""
+    holes = "".join(f"M{hx} {hy}h5.4v5.4h-5.4z" for hx, hy in ((11.3, 22.1), (23.3, 22.1), (11.3, 36.5), (23.3, 36.5)))
+    return (f'<path transform="translate({x:g} {y:g}) scale({h / 64:.4f})" fill="{TEXT}" fill-rule="evenodd" '
+            f'd="M20 2 38 32 20 62 2 32Z{holes}"/>')
+
+
+def controls(x_right, y):
+    """Minimize, maximize and close, drawn with 3x3 squares (WinControls.astro)."""
+    glyphs = ([(0, 10), (5, 10), (10, 10)], [(0, 0), (10, 0), (0, 10), (10, 10)],
+              [(0, 0), (10, 0), (5, 5), (0, 10), (10, 10)])
+    out, x = [], x_right - 3 * 13 - 2 * 9
+    for glyph in glyphs:
+        out += [f'<rect x="{x + dx}" y="{y + dy}" width="3" height="3" fill="{GREY}"/>' for dx, dy in glyph]
+        x += 13 + 9
+    return "".join(out)
+
+
+def tag(x_right, y_mid, s, color):
+    """An outlined mono tag, right-aligned on x_right."""
+    size, ls = 9.5, 0.57
+    w, h = text_width("mono-500", size, s, ls) + 10, 16
+    x = x_right - w
+    return (f'<rect x="{x + .5:g}" y="{y_mid - h / 2 + .5:g}" width="{w - 1:g}" height="{h - 1}" fill="none" '
+            f'stroke="{color}"/>' + text(x + 5 + ls / 2, y_mid + 3.4, s, "mono-500", size, color, ls))
+
+
+def title(s, sub=None):
+    out = text(38, 38, s, "rajdhani-600", 20, TEXT, 0.8)
+    if sub:
+        out += text(38 + text_width("rajdhani-600", 20, s, 0.8) + 8, 38, "// " + sub, "rajdhani-600", 20, GREY, 0.8)
+    return out
+
+
+def rule(x, y, w, h=1):
+    return f'<rect x="{x:g}" y="{y:g}" width="{w:g}" height="{h:g}" fill="{RAIL}" fill-opacity=".25"/>'
+
+
+def frame(w, h, head, body, faces, label):
+    """Window frame: edge, corner ticks, dotted rails, emblem, title row and separator."""
+    rail_w = (w - 20) // 5 * 5 - 2
+    ticks = (f"M.5 10.5V.5H10.5M{w - 10.5} .5H{w - .5}V10.5"
+             f"M.5 {h - 10.5}V{h - .5}H10.5M{w - 10.5} {h - .5}H{w - .5}V{h - 10.5}")
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}" role="img" '
+            f'aria-labelledby="t"><title id="t">{escape(label)}</title>{style(faces)}'
+            f'<defs><pattern id="rail" x="10" y="0" width="5" height="3" patternUnits="userSpaceOnUse">'
+            f'<rect width="3" height="3" fill="{RAIL}" fill-opacity=".25"/></pattern></defs>'
+            f'<rect width="{w}" height="{h}" fill="{BG}"/>'
+            f'<rect x=".5" y=".5" width="{w - 1}" height="{h - 1}" fill="none" stroke="{RAIL}" stroke-opacity=".14"/>'
+            f'<path d="{ticks}" fill="none" stroke="{BETA}" shape-rendering="crispEdges"/>'
+            f'<rect x="10" y="6" width="{rail_w}" height="3" fill="url(#rail)"/>'
+            f'<rect x="10" y="{h - 9}" width="{rail_w}" height="3" fill="url(#rail)"/>'
+            f'{emblem(18, 21)}{head}{rule(12, 52, w - 24)}{body}</svg>')
+
+
+def plural(n, word):
+    return f"{n:,} {word}{'' if n == 1 else 's'}"
+
+
+def joined(stats):
+    when = datetime.fromisoformat(stats["created_at"].replace("Z", "+00:00")).astimezone(TZ)
+    return f"{MONTHS[when.month - 1].title()} {when.year}"
+
+
+def profile_card(stats, today):
+    w, h, weeks, rows, pitch, size, gx, gy = 850, 230, 52, 9, 10, 6, 30, 100
+    days = stats["days"]
+    cols = weekly_columns(days, today, weeks)
+    top = max(cols)
+    body = [marker(24, 74.5), text(36, 82, "CONTRIBUTIONS · LAST 52 WEEKS", "mono-400", 10.5, GREY, 0.42),
+            text(gx + weeks * pitch - 4, 82, f"{sum(cols):,}", "mono-500", 11.5, TEXT, anchor="end"),
+            f'<defs><pattern id="cell" x="{gx}" y="{gy}" width="{pitch}" height="{pitch}" patternUnits="userSpaceOnUse">'
+            f'<rect width="{size}" height="{size}" fill="{RAIL}" fill-opacity=".18"/></pattern></defs>',
+            f'<rect x="{gx}" y="{gy}" width="{weeks * pitch - pitch + size}" height="{rows * pitch - pitch + size}" '
+            f'fill="url(#cell)"/>']
+    for c, n in enumerate(cols):
+        for r in range(cells(n, top, rows)):
+            body.append(f'<rect x="{gx + c * pitch}" y="{gy + (rows - 1 - r) * pitch}" width="{size}" '
+                        f'height="{size}" fill="{BETA}"/>')
+    for c, month in month_labels(today, weeks):
+        body.append(text(gx + c * pitch, gy + rows * pitch + 12, month, "mono-400", 9.5, GREY, 0.38))
+    current, longest = streaks(days, today)
+    total = sum(days.values())
+    facts = [("TOTAL CONTRIBUTIONS", f"{total:,}"), ("PUBLIC REPOS", f"{stats['public_repos']:,}"),
+             ("CURRENT STREAK", plural(current, "day")), ("LONGEST STREAK", plural(longest, "day")),
+             ("JOINED", joined(stats))]
+    body.append(f'<rect x="590" y="66" width="1" height="146" fill="{RAIL}" fill-opacity=".25"/>')
+    for i, (key, value) in enumerate(facts):
+        y = 64 + i * 30
+        body.append(text(608, y + 19, key, "mono-400", 10, GREY, 0.4))
+        body.append(text(826, y + 19.5, value, "instrument-500", 14, TEXT, anchor="end"))
+        if i < len(facts) - 1:
+            body.append(rule(608, y + 29, 218))
+    head = title("MOTHERSPHERE", "GITHUB") + tag(w - 24 - 57 - 16, 32, f"SYNC {today.isoformat()}", TEAL)
+    head += controls(w - 24, 26)
+    label = (f"MotherSphere on GitHub: {total:,} contributions, {stats['public_repos']} public repos, "
+             f"current streak {plural(current, 'day')}, longest {plural(longest, 'day')}, joined {joined(stats)}.")
+    return frame(w, h, head, "".join(body), FACES, label)
+
+
+def lang_card(active, items, caption, unit):
+    w, h, pitch, size, gx = 420, 240, 8, 5, 140
+    body = [f'<defs><pattern id="dash" x="12" y="0" width="4" height="1" patternUnits="userSpaceOnUse">'
+            f'<rect width="2.4" height="1" fill="{DASH}"/></pattern></defs>',
+            f'<rect x="12" y="83" width="{w - 24}" height="1" fill="url(#dash)"/>']
+    x = 24
+    for label, key in (("BY REPO", "repo"), ("BY COMMIT", "commit")):
+        tab_w = text_width("rajdhani-600", 14, label, 0.56)
+        body.append(text(x, 76, label, "rajdhani-600", 14, WHITE if key == active else GREY, 0.56))
+        if key == active:
+            body.append(f'<rect x="{x - 4:g}" y="82" width="{tab_w + 8:g}" height="3" fill="{BETA}"/>')
+        x += tab_w + 28
+    body += [marker(24, 97.5), text(36, 105, caption, "mono-400", 10, GREY, 0.4),
+             text(w - 24, 105, unit, "mono-400", 10, GREY, 0.4, anchor="end")]
+    top = items[0][1] if items else 0
+    for i, (name, n) in enumerate(items):
+        y = 116 + i * 22
+        if i == 0:
+            body.append(f'<g class="pulse"><rect x="12" y="{y}" width="{w - 24}" height="22" fill="{BETA}" '
+                        f'fill-opacity=".12"/><rect x="12" y="{y}" width="3" height="22" fill="{BETA}"/></g>')
+        body.append(text(24, y + 16, fit("rajdhani-600", 15, name, 108), "rajdhani-600", 15, WHITE if i == 0 else TEXT))
+        filled = cells(n, top, 25)
+        for c in range(25):
+            on = c < filled
+            body.append(f'<rect x="{gx + c * pitch}" y="{y + 8.5}" width="{size}" height="{size}" '
+                        f'fill="{BETA if on else RAIL}"' + ("/>" if on else ' fill-opacity=".18"/>'))
+        body.append(text(w - 24, y + 15.5, f"{n:,}", "mono-500", 11, TEXT if i == 0 else GREY, anchor="end"))
+    label = f"Top languages by {active}: " + ", ".join(f"{k} {v:,}" for k, v in items) + "."
+    return frame(w, h, title("LANGUAGES") + controls(w - 24, 26), "".join(body), FACES[:3], label)
+
+
+def render_all(stats, today):
+    since = joined(stats).upper()
+    return {
+        "github-profile.svg": profile_card(stats, today),
+        "github-langs-repo.svg": lang_card("repo", top5(stats["langs_by_repo"]),
+                                           "PUBLIC REPOS · MOTHERSPHERE + COLONY", "REPOS"),
+        "github-langs-commit.svg": lang_card("commit", top5(stats["langs_by_commit"]),
+                                             f"COMMITS · SINCE {since}", "COMMITS"),
+    }

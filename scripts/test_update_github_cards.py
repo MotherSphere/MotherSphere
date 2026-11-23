@@ -3,6 +3,7 @@
 import json
 import sys
 import unittest
+import xml.etree.ElementTree as ET
 from datetime import date, timedelta
 from pathlib import Path
 
@@ -105,6 +106,76 @@ class FitTests(unittest.TestCase):
         out = cards.fit("rajdhani-600", 15, "Jupyter Notebook Extended", 108)
         self.assertTrue(out.endswith("…"))
         self.assertLessEqual(cards.text_width("rajdhani-600", 15, out), 108)
+
+
+SVG = "{http://www.w3.org/2000/svg}"
+STATS = {
+    "created_at": "2025-10-02T12:11:56Z",
+    "public_repos": 28,
+    "days": {"2026-01-05": 40, "2026-11-20": 3, "2026-11-21": 0, "2026-11-22": 5, "2026-11-23": 0},
+    "langs_by_repo": {"Rust": 23, "C++": 4, "A&B <x>": 3, "Python": 3, "Jupyter Notebook Extended": 2},
+    "langs_by_commit": {"Rust": 3286, "Lua": 1112},
+}
+NAMES = ("github-profile.svg", "github-langs-repo.svg", "github-langs-commit.svg")
+
+
+def texts(svg):
+    return ["".join(t.itertext()) for t in ET.fromstring(svg).iter(SVG + "text")]
+
+
+class RenderTests(unittest.TestCase):
+    def setUp(self):
+        self.out = cards.render_all(STATS, TODAY)
+
+    def test_cards_are_well_formed_svg(self):
+        self.assertEqual(sorted(self.out), sorted(NAMES))
+        for svg in self.out.values():
+            self.assertEqual(ET.fromstring(svg).tag, SVG + "svg")
+
+    def test_no_external_references(self):
+        for name, svg in self.out.items():
+            self.assertEqual(svg.count("http"), 1, name)
+
+    def test_fonts_are_embedded(self):
+        self.assertEqual(self.out["github-profile.svg"].count("data:font/woff2;base64,"), 4)
+        self.assertEqual(self.out["github-langs-repo.svg"].count("data:font/woff2;base64,"), 3)
+        self.assertEqual(self.out["github-langs-commit.svg"].count("data:font/woff2;base64,"), 3)
+
+    def test_profile_shows_numbers(self):
+        shown = texts(self.out["github-profile.svg"])
+        for value in ("48", "28", "1 day", "Oct 2025", "SYNC 2026-11-23"):
+            self.assertIn(value, shown)
+
+    def test_language_names_are_escaped(self):
+        shown = texts(self.out["github-langs-repo.svg"])
+        self.assertIn("A&B <x>", shown)
+        self.assertIn("C++", shown)
+        self.assertTrue(any(t.startswith("Jupyter") and t.endswith("…") for t in shown))
+
+    def test_fewer_than_five_languages(self):
+        root = ET.fromstring(self.out["github-langs-commit.svg"])
+        rows = ["".join(t.itertext()) for t in root.iter(SVG + "text") if t.get("font-size") == "15"]
+        self.assertEqual(rows, ["Rust", "Lua"])
+
+    def test_empty_history(self):
+        shown = texts(cards.render_all(dict(STATS, days={}), TODAY)["github-profile.svg"])
+        self.assertIn("0 days", shown)
+
+    def test_size_under_100kb(self):
+        for name, svg in self.out.items():
+            self.assertLess(len(svg.encode()), 100_000, name)
+
+    def test_render_is_deterministic(self):
+        self.assertEqual(self.out, cards.render_all(STATS, TODAY))
+
+    def test_reduced_motion_rule(self):
+        for name in NAMES[1:]:
+            self.assertIn("prefers-reduced-motion", self.out[name])
+
+    def test_titles(self):
+        for name, start in zip(NAMES, ("MotherSphere on GitHub", "Top languages by repo", "Top languages by commit")):
+            title = ET.fromstring(self.out[name]).find(SVG + "title").text
+            self.assertTrue(title.startswith(start), title)
 
 
 if __name__ == "__main__":
