@@ -201,26 +201,18 @@ Cisco Networking Academy badges:
 <p align="center">
   <img
     width="100%"
-    alt="Profile summary"
-    src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=mothersphere&theme=2077"
+    alt="Contributions over the last 52 weeks, totals and streaks"
+    src="img/github-profile.svg"
   />
   <img
     width="49%"
-    alt="Repositories per language"
-    src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=mothersphere&theme=2077"
+    alt="Top languages by public repository"
+    src="img/github-langs-repo.svg"
   />
   <img
     width="49%"
-    alt="Most committed languages"
-    src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=mothersphere&theme=2077"
-  />
-</p>
-
-<p align="center">
-  <img
-    width="60%"
-    alt="Contribution streak"
-    src="https://streak-stats.demolab.com/?user=mothersphere&theme=neon&date_format=%5BY%20%5DM%20j"
+    alt="Top languages by commit"
+    src="img/github-langs-commit.svg"
   />
 </p>
 
